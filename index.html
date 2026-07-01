@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diecast Haven | Premium Scale Model Car Hub</title>
+  <meta name="description" content="Discover the ultimate collection of premium diecast scale model cars. AutoArt, Bburago, Mini GT, and Hot Wheels. Premium details for passionate collectors.">
+  
+  <!-- Google Fonts: Outfit for titles, Inter for body -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-theme">
+  <!-- Top Navigation Header -->
+  <header class="main-header">
+    <div class="header-container">
+      <!-- Logo -->
+      <a href="#" class="logo-area" id="logo-link">
+        <span class="logo-accent">DIECAST</span>HAVEN
+      </a>
+
+      <!-- Navigation Links -->
+      <nav class="nav-links">
+        <button class="nav-item active" id="nav-home">Home</button>
+        <button class="nav-item" id="nav-catalog">Shop All</button>
+        <div class="dropdown">
+          <button class="nav-item dropdown-toggle">Categories ▾</button>
+          <div class="dropdown-menu">
+            <button class="cat-menu-item" data-category="Sports Cars">Sports Cars</button>
+            <button class="cat-menu-item" data-category="Supercars">Supercars</button>
+            <button class="cat-menu-item" data-category="Formula 1">Formula 1</button>
+            <button class="cat-menu-item" data-category="Muscle Cars">Muscle Cars</button>
+            <button class="cat-menu-item" data-category="Classic Cars">Classic Cars</button>
+            <button class="cat-menu-item" data-category="Trucks">Trucks</button>
+            <button class="cat-menu-item" data-category="Bikes">Bikes</button>
+            <button class="cat-menu-item" data-category="Movie Cars">Movie Cars</button>
+          </div>
+        </div>
+        <button class="nav-item" id="nav-about">About Us</button>
+        <button class="nav-item" id="nav-contact">Contact</button>
+      </nav>
+
+      <!-- Live Search Bar -->
+      <div class="search-wrapper">
+        <div class="search-input-group">
+          <input type="text" id="live-search-input" placeholder="Search replica models (e.g. Skyline, 1:18, Porsche)..." autocomplete="off">
+          <button id="btn-search-trigger" aria-label="Search">
+            <svg class="search-icon" viewBox="0 0 24 24">
+              <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+            </svg>
+          </button>
+        </div>
+        <!-- Search Auto Suggestions Dropdown -->
+        <div id="search-suggestions" class="search-suggestions-dropdown hidden"></div>
+      </div>
+
+      <!-- Action Panel Buttons -->
+      <div class="header-actions">
+        <!-- Theme Toggle -->
+        <button id="theme-toggle" class="action-icon-btn" aria-label="Toggle Light/Dark Theme">
+          <svg class="sun-icon hidden" viewBox="0 0 24 24"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41l-1.06-1.06zm1.06-10.96c.39-.39.39-1.03 0-1.41s-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06zM7.05 18.01c.39-.39.39-1.03 0-1.41s-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06z"/></svg>
+          <svg class="moon-icon" viewBox="0 0 24 24"><path d="M12.3 22c.59 0 1.07-.48 1.07-1.07 0-.06-.01-.13-.02-.19C11.07 19.34 10 17.29 10 15c0-3.87 3.13-7 7-7 1.08 0 2.09.25 3 .71.1.05.21.08.31.08.39 0 .74-.23.89-.59.18-.45-.03-.97-.47-1.18C18.66 6.13 16.94 5.5 15 5.5 9.75 5.5 5.5 9.75 5.5 15s4.25 9.5 9.5 9.5c1.02 0 2.02-.17 2.98-.51.4-.14.62-.56.53-.98-.07-.31-.33-.51-.66-.51-.15 0-.3.04-.45.1C15.93 21.84 14.15 22 12.3 22z"/></svg>
+        </button>
+
+        <!-- Admin Shortcut -->
+        <button id="admin-panel-btn" class="action-icon-btn text-gold" title="Admin Control Room">
+          <span class="admin-badge">Admin</span>
+        </button>
+
+        <!-- User Profile -->
+        <button id="user-profile-btn" class="action-icon-btn" title="Collector Account">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-6.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
+        </button>
+
+        <!-- Wishlist -->
+        <button id="wishlist-trigger-btn" class="action-icon-btn" title="Wishlist">
+          <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+          <span id="wishlist-badge" class="badge">0</span>
+        </button>
+
+        <!-- Cart Trigger -->
+        <button id="cart-trigger-btn" class="action-cart-btn" title="Shopping Cart">
+          <svg viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+          <div class="cart-btn-info">
+            <span id="cart-badge" class="badge">0</span>
+            <span id="cart-total-price" class="cart-total-txt">$0.00</span>
+          </div>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Areas (Routing Targets) -->
+  <main class="main-content-layout">
+
+    <!-- 1. HOMEPAGE ROUTE -->
+    <section id="route-home" class="route-view active">
+      <!-- Hero Banner Slider -->
+      <div class="hero-carousel">
+        <div class="hero-slides-container">
+          <div class="hero-slide active" style="background-image: linear-gradient(rgba(10,10,10,0.1), rgba(10,10,10,0.85)), url('https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?w=1600&auto=format&fit=crop&q=80')">
+            <div class="hero-text-content">
+              <span class="hero-overline">Limited Collectible Edition</span>
+              <h2 class="hero-title">Porsche 911 GT3 RS (992)</h2>
+              <p class="hero-subtitle">Experience peak performance in 1:18 composite scale with full functional details by AutoArt.</p>
+              <div class="hero-buttons">
+                <button class="btn-primary btn-hero-view" data-id="p1">Explore Details</button>
+                <button class="btn-secondary btn-hero-shop">View Collection</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Flash Sales Section -->
+      <section class="home-section flash-sales-section">
+        <div class="section-header-container">
+          <div class="section-title-wrap">
+            <span class="section-tagline">Limited Time Offers</span>
+            <h2 class="section-main-title">Collector Flash Sales</h2>
+          </div>
+          <div class="countdown-container">
+            <span>Ends in:</span>
+            <div id="flash-countdown"><span class="time-block">03</span>h <span class="time-block">47</span>m <span class="time-block">19</span>s</div>
+          </div>
+        </div>
+        <div class="flash-cards-grid" id="flash-products-container">
+          <!-- Populated dynamically via JS -->
+        </div>
+      </section>
+      <!-- Categories Section -->
+      <section class="home-section categories-section">
+        <div class="section-header-container center">
+          <div class="section-title-wrap">
+            <span class="section-tagline font-center">Browse by Scale / Model</span>
+            <h2 class="section-main-title font-center">Diecast Classifications</h2>
+          </div>
+        </div>
+        <div class="categories-grid-container">
+          <!-- 8 Categories -->
+          <div class="category-card" data-category="Sports Cars" style="background-image: linear-gradient(rgba(10,10,10,0.2), rgba(10,10,10,0.8)), url('https://images.unsplash.com/photo-1605558158359-e85790d34352?w=500&auto=format&fit=crop&q=80')">
+            <div class="category-card-info">
+              <h3>Sports Cars</h3>
+              <p>Legendary street replicas</p>
+            </div>
+          </div>
+          <div class="category-card" data-category="Supercars" style="background-image: linear-gradient(rgba(10,10,10,0.2), rgba(10,10,10,0.8)), url('https://images.unsplash.com/photo-1621135802920-133df287f89c?w=500&auto=format&fit=crop&q=80')">
+            <div class="category-card-info">
+              <h3>Supercars</h3>
+              <p>Exotic performance replicas</p>
+            </div>
+          </div>
+          <div class="category-card" data-category="Formula 1" style="background-image: linear-gradient(rgba(10,10,10,0.2), rgba(10,10,10,0.8)), url('https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=500&auto=format&fit=crop&q=80')">
+            <div class="category-card-info">
+              <h3>Formula 1</h3>
+              <p>High-detail grand prix models</p>
+            </div>
+          </div>
+          <div class="category-card" data-category="Muscle Cars" style="background-image: linear-gradient(rgba(10,10,10,0.2), rgba(10,10,10,0.8)), url('https://images.unsplash.com/photo-1606016159991-dfe4f2746ad5?w=500&auto=format&fit=crop&q=80')">
+            <div class="category-card-info">
+              <h3>Muscle Cars</h3>
+              <p>Raw V8 american power</p>
+            </div>
+          </div>
+          <div class="category-card" data-category="Classic Cars" style="background-image: linear-gradient(rgba(10,10,10,0.2), rgba(10,10,10,0.8)), url('https://images.unsplash.com/photo-1563720223185-11003d516935?w=500&auto=format&fit=crop&q=80')">
+            <div class="category-card-info">
+              <h3>Classic Cars</h3>
+              <p>Vintage golden age replica models</p>
+            </div>
+          </div>
+          <div class="category-card" data-category="Trucks" style="background-image: linear-gradient(rgba(10,10,10,0.2), rgba(10,10,10,0.8)), url('https://images.unsplash.com/photo-1551524559-8af4e6624178?w=500&auto=format&fit=crop&q=80')">
+            <div class="category-card-info">
+              <h3>Trucks</h3>
+              <p>Heavy haulers & offroad giants</p>
+            </div>
+          </div>
+          <div class="category-card" data-category="Bikes" style="background-image: linear-gradient(rgba(10,10,10,0.2), rgba(10,10,10,0.8)), url('https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?w=500&auto=format&fit=crop&q=80')">
+            <div class="category-card-info">
+              <h3>Bikes</h3>
+              <p>Two-wheel race replicas</p>
+            </div>
+          </div>
+          <div class="category-card" data-category="Movie Cars" style="background-image: linear-gradient(rgba(10,10,10,0.2), rgba(10,10,10,0.8)), url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=500&auto=format&fit=crop&q=80')">
+            <div class="category-card-info">
+              <h3>Movie Cars</h3>
+              <p>Pop-culture film legends</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Featured / Best Sellers / Limited Tabbed Section -->
+      <section class="home-section catalog-tabs-section">
+        <div class="section-header-container center">
+          <div class="section-title-wrap">
+            <span class="section-tagline font-center">Curated Collections</span>
+            <h2 class="section-main-title font-center">Exquisite Showcase</h2>
+          </div>
+        </div>
+        
+        <div class="tabs-buttons-row">
+          <button class="tab-btn active" data-tag="Best Sellers">Best Sellers</button>
+          <button class="tab-btn" data-tag="New Arrivals">New Arrivals</button>
+          <button class="tab-btn" data-tag="Limited Editions">Limited Editions</button>
+        </div>
+
+        <div class="featured-products-grid" id="tabbed-products-container">
+          <!-- Populated dynamically via JS -->
+        </div>
+      </section>
+
+      <!-- Popular Brands Carousel -->
+      <section class="home-section brands-section">
+        <div class="section-header-container center">
+          <div class="section-title-wrap">
+            <span class="section-tagline font-center">Licensed Manufacturers</span>
+            <h2 class="section-main-title font-center">Industry Leading Brands</h2>
+          </div>
+        </div>
+        <div class="brand-carousel">
+          <div class="brand-track">
+            <div class="brand-item" data-brand="AutoArt">AutoArt</div>
+            <div class="brand-item" data-brand="Mini GT">Mini GT</div>
+            <div class="brand-item" data-brand="Maisto">Maisto</div>
+            <div class="brand-item" data-brand="Bburago">Bburago</div>
+            <div class="brand-item" data-brand="Tomica">Tomica</div>
+            <div class="brand-item" data-brand="Hot Wheels">Hot Wheels</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Customer Reviews Slider -->
+      <section class="home-section reviews-section">
+        <div class="section-header-container center">
+          <div class="section-title-wrap">
+            <span class="section-tagline font-center">Collector Testimonials</span>
+            <h2 class="section-main-title font-center">What Collectors Say</h2>
+          </div>
+        </div>
+        <div class="reviews-slider-container">
+          <div class="reviews-wrapper" id="reviews-slider">
+            <div class="review-slide active">
+              <div class="review-stars">★★★★★</div>
+              <p class="review-text">"AutoArt models from Diecast Haven are breathtaking. The detail on the Pagani Aventador model is so real that people think it is a real engine photo. Highly recommend this store."</p>
+              <div class="review-author">
+                <span class="author-name">David L.</span>
+                <span class="author-label">Gold Tier Collector</span>
+              </div>
+            </div>
+            <div class="review-slide">
+              <div class="review-stars">★★★★★</div>
+              <p class="review-text">"The live search is extremely helpful and packaging is super secure. I have purchased over 15 Mini GT 1:64 scale cars from here and not a single box had a dent. Incredible service!"</p>
+              <div class="review-author">
+                <span class="author-name">Sophia M.</span>
+                <span class="author-label">Verified Buyer</span>
+              </div>
+            </div>
+            <div class="review-slide">
+              <div class="review-stars">★★★★★</div>
+              <p class="review-text">"I compared three muscle cars using their comparison tool and instantly ordered the Plymouth Superbird. The ordering and tracking processes were completely smooth."</p>
+              <div class="review-author">
+                <span class="author-name">Robert K.</span>
+                <span class="author-label">Classic Car Collector</span>
+              </div>
+            </div>
+          </div>
+          <div class="reviews-nav">
+            <button id="btn-prev-review" class="review-nav-btn">←</button>
+            <button id="btn-next-review" class="review-nav-btn">→</button>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <!-- 2. CATALOG / SHOPPING ROUTE -->
+    <section id="route-catalog" class="route-view">
+      <div class="catalog-page-container">
+        <!-- Sidebar Filters -->
+        <aside class="catalog-sidebar">
+          <div class="sidebar-header">
+            <h4>Filters</h4>
+            <button id="btn-reset-filters" class="btn-text-sm">Clear All</button>
+          </div>
+          
+          <!-- Category Filter -->
+          <div class="filter-group">
+            <h5>Category</h5>
+            <div class="filter-options-list" id="filter-categories-container">
+              <!-- Loaded via JS -->
+            </div>
+          </div>
+
+          <!-- Brand Filter -->
+          <div class="filter-group">
+            <h5>Brand</h5>
+            <div class="filter-options-list" id="filter-brands-container">
+              <!-- Loaded via JS -->
+            </div>
+          </div>
+
+          <!-- Scale Filter -->
+          <div class="filter-group">
+            <h5>Scale</h5>
+            <div class="filter-options-list" id="filter-scales-container">
+              <label class="checkbox-label">
+                <input type="checkbox" class="scale-filter-chk" value="1:18"> 1:18 Scale
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" class="scale-filter-chk" value="1:24"> 1:24 Scale
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" class="scale-filter-chk" value="1:64"> 1:64 Scale
+              </label>
+            </div>
+          </div>
+
+          <!-- Price Range Slider -->
+          <div class="filter-group">
+            <h5>Price Range</h5>
+            <div class="price-slider-wrap">
+              <input type="range" id="price-range-slider" min="5" max="400" value="400" step="5">
+              <div class="price-labels">
+                <span>Min: $5</span>
+                <span id="price-slider-value">Max: $400</span>
+              </div>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Product Grid and Sorting -->
+        <div class="catalog-main-area">
+          <div class="catalog-toolbar">
+            <span class="results-count" id="catalog-results-count">Showing all products</span>
+            <div class="toolbar-sort">
+              <label for="sort-select">Sort By:</label>
+              <select id="sort-select" class="custom-select">
+                <option value="popularity">Popularity</option>
+                <option value="price-low">Price: Low to High</option>
+                <option value="price-high">Price: High to Low</option>
+                <option value="rating">Rating</option>
+              </select>
+            </div>
+          </div>
+          <div class="catalog-products-grid" id="catalog-products-grid">
+            <!-- Dynamic product cards -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. PRODUCT DETAILS ROUTE -->
+    <section id="route-details" class="route-view">
+      <div class="details-page-container" id="details-container">
+        <!-- Loaded Dynamically via App.js -->
+      </div>
+      <!-- AI Recommendation Section on Product page -->
+      <section class="details-recommendations-section">
+        <div class="section-header-container">
+          <h3 class="section-sub-title">Recommended Replica Additions</h3>
+        </div>
+        <div class="featured-products-grid" id="details-recommendations-container">
+          <!-- AI recommendation cards -->
+        </div>
+      </section>
+    </section>
+
+    <!-- 4. WISHLIST ROUTE -->
+    <section id="route-wishlist" class="route-view">
+      <div class="wishlist-page-container">
+        <div class="section-header-container">
+          <div class="section-title-wrap">
+            <h2 class="section-main-title">My Wishlist Showcase</h2>
+            <p>Saved replica items for your future collection acquisitions.</p>
+          </div>
+          <button id="btn-add-all-wishlist-cart" class="btn-primary">Add All to Cart</button>
+        </div>
+        <div class="catalog-products-grid" id="wishlist-grid">
+          <!-- Wishlist items rendering -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. CHECKOUT ROUTE -->
+    <section id="route-checkout" class="route-view">
+      <div class="checkout-page-container">
+        <h2>Acquisition Checkout</h2>
+        <div class="checkout-two-columns">
+          <!-- Checkout Form -->
+          <form id="checkout-form" class="checkout-form-panel glass-card">
+            <h4>Collector Shipping Details</h4>
+            <div class="form-row">
+              <div class="form-field">
+                <label for="checkout-fname">First Name</label>
+                <input type="text" id="checkout-fname" required>
+              </div>
+              <div class="form-field">
+                <label for="checkout-lname">Last Name</label>
+                <input type="text" id="checkout-lname" required>
+              </div>
+            </div>
+            <div class="form-field">
+              <label for="checkout-email">Email Address</label>
+              <input type="email" id="checkout-email" required>
+            </div>
+            <div class="form-field">
+              <label for="checkout-address">Delivery Address</label>
+              <input type="text" id="checkout-address" required placeholder="Street address, apartment, suite">
+            </div>
+            <div class="form-row">
+              <div class="form-field">
+                <label for="checkout-city">City</label>
+                <input type="text" id="checkout-city" required>
+              </div>
+              <div class="form-field">
+                <label for="checkout-zip">ZIP / Postal Code</label>
+                <input type="text" id="checkout-zip" required>
+              </div>
+            </div>
+
+            <h4 style="margin-top: 1.5rem;">Collector Rank Payment</h4>
+            <div class="payment-method-selector">
+              <label class="radio-label active">
+                <input type="radio" name="payment-method" value="cc" checked> Credit Card (Simulated)
+              </label>
+              <label class="radio-label">
+                <input type="radio" name="payment-method" value="paypal"> PayPal (Simulated)
+              </label>
+            </div>
+            
+            <div id="credit-card-fields" class="form-row card-fields-group">
+              <div class="form-field width-60">
+                <label for="card-num">Card Number</label>
+                <input type="text" id="card-num" placeholder="XXXX-XXXX-XXXX-XXXX">
+              </div>
+              <div class="form-field width-20">
+                <label for="card-exp">Expiry</label>
+                <input type="text" id="card-exp" placeholder="MM/YY">
+              </div>
+              <div class="form-field width-20">
+                <label for="card-cvv">CVV</label>
+                <input type="password" id="card-cvv" placeholder="***">
+              </div>
+            </div>
+
+            <button type="submit" id="btn-submit-order" class="btn-primary-block" style="margin-top: 1.5rem;">Place Acquisition Order</button>
+          </form>
+
+          <!-- Order Summary Sidebar -->
+          <div class="checkout-summary-panel glass-card" id="checkout-summary-container">
+            <!-- Populated via JS -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. USER ACCOUNT ROUTE -->
+    <section id="route-account" class="route-view">
+      <div class="account-page-container">
+        <h2>Collector Dashboard</h2>
+        <div class="account-tabs-container">
+          <!-- Sidebar -->
+          <aside class="account-sidebar">
+            <button class="account-tab-link active" data-sub="profile">Profile Overview</button>
+            <button class="account-tab-link" data-sub="orders">Orders History</button>
+            <button class="account-tab-link" data-sub="tracking">Order Tracking</button>
+            <button class="account-tab-link" data-sub="settings">Address Book</button>
+          </aside>
+          <!-- Pane Area -->
+          <div class="account-pane-area">
+            <!-- Profile Tab -->
+            <div class="account-sub-pane active" id="account-sub-profile">
+              <div class="profile-header-card glass-card">
+                <div class="profile-avatar">🏎️</div>
+                <div class="profile-welcome">
+                  <h3>Welcome back, Senior Collector</h3>
+                  <span class="user-tier">VIP Titanium Level</span>
+                  <div class="points-tracker">
+                    <span>Rank Points: <strong>1,450 XP</strong></span>
+                    <span class="progress-bar-tiny"><span style="width: 70%"></span></span>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="recent-activity-panel" style="margin-top: 2rem;">
+                <h4>Recent Purchases Quick Look</h4>
+                <div id="account-recent-orders-list">
+                  <!-- Load orders via JS -->
+                </div>
+              </div>
+            </div>
+
+            <!-- Orders Tab -->
+            <div class="account-sub-pane" id="account-sub-orders">
+              <h4>Order History</h4>
+              <div id="account-orders-history-container">
+                <!-- Loaded via JS -->
+              </div>
+            </div>
+
+            <!-- Tracking Tab -->
+            <div class="account-sub-pane" id="account-sub-tracking">
+              <h4>Live Order Tracking</h4>
+              <div class="tracking-search-box">
+                <input type="text" id="tracking-search-id-input" placeholder="Enter Order ID (e.g., DH-123456)">
+                <button id="btn-submit-tracking" class="btn-primary">Track Order</button>
+              </div>
+              <div id="tracking-result-area" style="margin-top: 1.5rem;">
+                <p class="placeholder-text">Enter an Order ID from your dashboard to trace the collector delivery route.</p>
+              </div>
+            </div>
+
+            <!-- Address Book Settings Tab -->
+            <div class="account-sub-pane" id="account-sub-settings">
+              <h4>Address Book & Payment Methods</h4>
+              <div class="settings-grid">
+                <div class="settings-card glass-card">
+                  <h5>Primary Delivery Address</h5>
+                  <p><strong>Nadeem Ahmad</strong></p>
+                  <p>123 Collector Drive, Suite 18</p>
+                  <p>San Francisco, CA 94107</p>
+                  <p>United States</p>
+                  <button class="btn-secondary-sm" style="margin-top: 1rem;">Edit Address</button>
+                </div>
+                <div class="settings-card glass-card">
+                  <h5>Saved Payment Methods</h5>
+                  <p>💳 Visa Ending in <strong>4590</strong></p>
+                  <p>Expires 11/2028</p>
+                  <button class="btn-secondary-sm" style="margin-top: 2.2rem;">Edit Cards</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. EXTRA INFORMATIONAL PAGES -->
+    <section id="route-extra" class="route-view">
+      <div class="extra-page-container">
+        <div class="extra-tabs-layout">
+          <!-- Sidebar -->
+          <aside class="extra-sidebar">
+            <button class="extra-tab-link" data-page="about">About Us</button>
+            <button class="extra-tab-link" data-page="contact">Contact Us</button>
+            <button class="extra-tab-link" data-page="faq">FAQ</button>
+            <button class="extra-tab-link" data-page="returns">Return Policy</button>
+            <button class="extra-tab-link" data-page="privacy">Privacy Policy</button>
+            <button class="extra-tab-link" data-page="terms">Terms & Conditions</button>
+          </aside>
+          <!-- Pane Area -->
+          <div class="extra-pane-content glass-card">
+            <!-- About -->
+            <div class="extra-pane-block" id="extra-block-about">
+              <h2>About Diecast Haven</h2>
+              <p class="lead">Diecast Haven was founded in 2021 by a team of passionate collectors who wanted a premium, high-quality, and dedicated online destination for model cars.</p>
+              <p>We pride ourselves on offering models from the absolute best brands worldwide. Our curators inspect each scale model for paint perfection, steering accuracy, and panel alignment before stocking. We understand that scale models are not just toys—they are architectural pieces of art.</p>
+            </div>
+            
+            <!-- Contact -->
+            <div class="extra-pane-block" id="extra-block-contact">
+              <h2>Contact Our Concierge</h2>
+              <p>Have questions about scales, materials, pre-orders, or bulk collections? Our expert collectors are standing by to guide you.</p>
+              <form id="contact-form" class="simple-form">
+                <div class="form-field">
+                  <label for="contact-name">Full Name</label>
+                  <input type="text" id="contact-name" required>
+                </div>
+                <div class="form-field">
+                  <label for="contact-email">Email Address</label>
+                  <input type="email" id="contact-email" required>
+                </div>
+                <div class="form-field">
+                  <label for="contact-msg">Message / Inquiry</label>
+                  <textarea id="contact-msg" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn-primary">Submit Ticket</button>
+              </form>
+            </div>
+
+            <!-- FAQ -->
+            <div class="extra-pane-block" id="extra-block-faq">
+              <h2>Frequently Asked Questions</h2>
+              <div class="faq-list">
+                <div class="faq-item">
+                  <h4>What do the scales mean?</h4>
+                  <p>Scales represent the ratio of the model to the real car. A <strong>1:18</strong> model is 18 times smaller than the actual car (approx. 25-30cm). A <strong>1:24</strong> is 24 times smaller (approx. 18-20cm), and <strong>1:64</strong> is 64 times smaller (approx. 6-8cm, pocket-sized).</p>
+                </div>
+                <div class="faq-item">
+                  <h4>Do the wheels steer and doors open?</h4>
+                  <p>In most high-end 1:18 models (like AutoArt), the steering wheel turns the wheels, and doors, hoods, and trunks open. In 1:64 models, the body is usually sealed to ensure perfect scaling structure, though they feature rolling rubber tires.</p>
+                </div>
+                <div class="faq-item">
+                  <h4>How are models shipped?</h4>
+                  <p>We wrap all collector boxes in heavy double-wall cardboard boxes with dense air-cushion packaging to guarantee the retail box arrives in mint condition.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Returns -->
+            <div class="extra-pane-block" id="extra-block-returns">
+              <h2>Return & Exchange Policy</h2>
+              <p>We offer a <strong>30-day mint-in-box return policy</strong>. If your scale model is defective or has paint rash out of the box, we will ship a replacement model immediately and cover the return shipping costs.</p>
+              <p>Returns for change of mind must be unopened in original manufacturer packaging with security seals intact.</p>
+            </div>
+
+            <!-- Privacy -->
+            <div class="extra-pane-block" id="extra-block-privacy">
+              <h2>Privacy Policy</h2>
+              <p>Your privacy is vital to us. We do not sell or trade collector profiles. We encrypt all payment transactions, and details of your collection showcase are strictly confidential.</p>
+            </div>
+
+            <!-- Terms -->
+            <div class="extra-pane-block" id="extra-block-terms">
+              <h2>Terms & Conditions</h2>
+              <p>By browsing Diecast Haven, you agree to collector-rank guidelines. Scale models sold here are targeted at adult collectors aged 14+. Prices are subject to collectibility market shifts.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. ADMIN DASHBOARD ROUTE -->
+    <section id="route-admin" class="route-view">
+      <div class="admin-page-container">
+        <div class="admin-header">
+          <h2>Admin Control Room</h2>
+          <button id="btn-admin-reset-data" class="btn-secondary-sm">Reset Site Data</button>
+        </div>
+
+        <!-- Dashboard Stats Grid -->
+        <div class="admin-stats-grid">
+          <div class="stat-card glass-card">
+            <span class="stat-label">Total Revenue</span>
+            <span class="stat-value" id="admin-stat-revenue">$0.00</span>
+            <span class="stat-trend text-gold">↑ 14% vs last week</span>
+          </div>
+          <div class="stat-card glass-card">
+            <span class="stat-label">Total Orders</span>
+            <span class="stat-value" id="admin-stat-orders">0</span>
+            <span class="stat-trend text-gold">↑ 8% vs last week</span>
+          </div>
+          <div class="stat-card glass-card">
+            <span class="stat-label">Catalog Sizes</span>
+            <span class="stat-value" id="admin-stat-products">20</span>
+            <span class="stat-trend">Replica variations</span>
+          </div>
+        </div>
+
+        <div class="admin-workspace-split">
+          <!-- Left: Manage Products -->
+          <div class="admin-products-panel glass-card">
+            <div class="panel-header-btn">
+              <h4>Active Inventory</h4>
+              <button id="btn-admin-open-add-form" class="btn-primary-sm">+ Add Replica</button>
+            </div>
+
+            <!-- Add Product Form Drawer (Toggle hidden) -->
+            <form id="admin-add-product-form" class="admin-form-drawer hidden">
+              <h5>New Replica Register</h5>
+              <div class="form-field">
+                <label for="admin-p-name">Model Name</label>
+                <input type="text" id="admin-p-name" required placeholder="e.g. Porsche 911 GT2 RS">
+              </div>
+              <div class="form-row">
+                <div class="form-field">
+                  <label for="admin-p-brand">Brand</label>
+                  <select id="admin-p-brand" required>
+                    <option value="AutoArt">AutoArt</option>
+                    <option value="Mini GT">Mini GT</option>
+                    <option value="Maisto">Maisto</option>
+                    <option value="Bburago">Bburago</option>
+                    <option value="Tomica">Tomica</option>
+                    <option value="Hot Wheels">Hot Wheels</option>
+                  </select>
+                </div>
+                <div class="form-field">
+                  <label for="admin-p-scale">Scale</label>
+                  <select id="admin-p-scale" required>
+                    <option value="1:18">1:18</option>
+                    <option value="1:24">1:24</option>
+                    <option value="1:64">1:64</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-field">
+                  <label for="admin-p-price">Price ($)</label>
+                  <input type="number" id="admin-p-price" step="0.01" min="0" required placeholder="e.g. 59.99">
+                </div>
+                <div class="form-field">
+                  <label for="admin-p-stock">Stock Quantity</label>
+                  <input type="number" id="admin-p-stock" min="0" required placeholder="e.g. 10">
+                </div>
+              </div>
+              <div class="form-field">
+                <label for="admin-p-cat">Category</label>
+                <select id="admin-p-cat" required>
+                  <option value="Sports Cars">Sports Cars</option>
+                  <option value="Supercars">Supercars</option>
+                  <option value="Formula 1">Formula 1</option>
+                  <option value="Muscle Cars">Muscle Cars</option>
+                  <option value="Classic Cars">Classic Cars</option>
+                  <option value="Trucks">Trucks</option>
+                  <option value="Bikes">Bikes</option>
+                  <option value="Movie Cars">Movie Cars</option>
+                </select>
+              </div>
+              <div class="form-field">
+                <label for="admin-p-desc">Description</label>
+                <textarea id="admin-p-desc" rows="3" placeholder="Write specifications..."></textarea>
+              </div>
+              <div class="form-row">
+                <div class="form-field">
+                  <label for="admin-p-color">Color</label>
+                  <input type="text" id="admin-p-color" placeholder="e.g. Acid Green">
+                </div>
+                <div class="form-field">
+                  <label for="admin-p-opening">Opening Parts</label>
+                  <input type="text" id="admin-p-opening" placeholder="e.g. Doors, Hood">
+                </div>
+              </div>
+              <div class="form-field">
+                <label for="admin-p-img1">Image URL (Main)</label>
+                <input type="url" id="admin-p-img1" placeholder="https://unsplash.com/...">
+              </div>
+              
+              <div class="form-actions-row">
+                <button type="submit" class="btn-primary">Register Model</button>
+                <button type="button" id="btn-admin-cancel-add" class="btn-secondary">Cancel</button>
+              </div>
+            </form>
+
+            <div class="admin-table-scroll">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Item</th>
+                    <th>Scale</th>
+                    <th>Price</th>
+                    <th>Stock</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-products-table-body">
+                  <!-- Dynamically populated -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Right: Manage Orders -->
+          <div class="admin-orders-panel glass-card">
+            <h4>Incoming Collector Orders</h4>
+            <div class="admin-table-scroll">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Order ID</th>
+                    <th>Date</th>
+                    <th>Total</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-orders-table-body">
+                  <!-- Dynamically populated -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footers Links -->
+  <footer class="main-footer">
+    <div class="footer-grid">
+      <!-- About/Logo -->
+      <div class="footer-column brand">
+        <span class="logo-area"><span class="logo-accent">DIECAST</span>HAVEN</span>
+        <p class="footer-desc">Premium scale model replica destination for passionate collectors worldwide.</p>
+        <div class="newsletter-group">
+          <h5>Newsletter Subscription</h5>
+          <div class="newsletter-input">
+            <input type="email" placeholder="collector@email.com">
+            <button>→</button>
+          </div>
+        </div>
+      </div>
+      <!-- Quick Links -->
+      <div class="footer-column">
+        <h5>Quick Navigation</h5>
+        <button class="footer-link" id="foot-nav-home">Home Showcase</button>
+        <button class="footer-link" id="foot-nav-catalog">Shop Catalog</button>
+        <button class="footer-link" id="foot-nav-admin">Admin Control</button>
+        <button class="footer-link" id="foot-nav-about">About Haven</button>
+      </div>
+      <!-- Customer Service -->
+      <div class="footer-column">
+        <h5>Customer Support</h5>
+        <button class="footer-link" id="foot-nav-faq">Frequently Asked Qs</button>
+        <button class="footer-link" id="foot-nav-returns">Return Policy</button>
+        <button class="footer-link" id="foot-nav-privacy">Privacy policy</button>
+        <button class="footer-link" id="foot-nav-terms">Terms of Service</button>
+      </div>
+      <!-- Contacts -->
+      <div class="footer-column contact-column">
+        <h5>Haven Concierge</h5>
+        <p>📍 123 Collector Drive, San Francisco, CA</p>
+        <p>📞 1-800-DIE-CAST (343-2278)</p>
+        <p>✉️ concierge@diecasthaven.com</p>
+        <div class="social-icons-row">
+          <span>Instagram</span> • <span>YouTube</span> • <span>Facebook</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Diecast Haven LLC. All scale replica graphics and contents reserved. Built for collectors.</p>
+    </div>
+  </footer>
+
+  <!-- 9. SHOPPING CART DRAWER (Sidebar Panel) -->
+  <div id="cart-drawer-overlay" class="drawer-overlay hidden">
+    <div class="cart-drawer-container">
+      <div class="drawer-header">
+        <h3>Collector Drawer</h3>
+        <button id="btn-close-cart-drawer" class="btn-close-drawer">&times;</button>
+      </div>
+      <div class="cart-drawer-body" id="cart-drawer-body-container">
+        <!-- Rendered via components.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 10. QUICK VIEW MODAL -->
+  <div id="quickview-modal" class="modal-overlay hidden">
+    <div class="modal-container">
+      <button id="btn-close-quickview" class="modal-close">&times;</button>
+      <div class="modal-content" id="quickview-content-area">
+        <!-- Loaded via JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 11. COMPARE SHARING MODAL -->
+  <div id="compare-modal" class="modal-overlay hidden">
+    <div class="modal-container width-wide">
+      <button id="btn-close-compare-modal" class="modal-close">&times;</button>
+      <div class="modal-content">
+        <h3>Car Model Comparison</h3>
+        <div id="compare-modal-content-area">
+          <!-- Loaded via JS -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 12. BOTTOM COMPARE WIDGET OVERLAY -->
+  <div id="compare-drawer-container-target">
+    <!-- Rendered dynamically from components.js -->
+  </div>
+
+  <!-- Scripts -->
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
